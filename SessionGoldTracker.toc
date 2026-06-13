@@ -1,0 +1,11 @@
+## Interface: 120005
+## Title: Session Gold Tracker
+## Notes: Tracks gold earned or lost during your current play session.
+## Author: Exodius & Darkal
+## URL: https://github.com/Exodius/SessionGoldTracker
+## Version: 1.0
+## Category: Loot
+## IconTexture: 1120721
+## SavedVariables: SessionGoldTrackerDB
+
+SessionGoldTracker.lua
