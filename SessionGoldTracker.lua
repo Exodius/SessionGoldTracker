@@ -196,7 +196,7 @@ local ROW_HEIGHT	= 16
 local HISTORY_ROWS	= 8  -- visible rows at once
 
 local historyFrame = CreateFrame("Frame", "SGTHistoryFrame", UIParent, "BackdropTemplate")
-historyFrame:SetSize(360, 36 + HISTORY_ROWS * ROW_HEIGHT)
+historyFrame:SetSize(360, 44 + HISTORY_ROWS * ROW_HEIGHT)
 historyFrame:SetClampedToScreen(true)
 historyFrame:SetBackdrop({
 	bgFile   = "Interface/Tooltips/UI-Tooltip-Background",
@@ -276,7 +276,7 @@ end
 --	Clear history button
 local clearHistBtn = CreateFrame("Button", nil, historyFrame, "UIPanelButtonTemplate")
 clearHistBtn:SetSize(50, 18)
-clearHistBtn:SetPoint("BOTTOMRIGHT", historyFrame, "BOTTOMRIGHT", -15, 137)
+clearHistBtn:SetPoint("BOTTOMRIGHT", historyFrame, "BOTTOMRIGHT", -15, 148)
 clearHistBtn:SetText("Clear")
 
 --	About Panel
