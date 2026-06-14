@@ -516,9 +516,28 @@ frame:SetScript("OnEvent", function(self, event)
 		if not SessionGoldTrackerDB then SessionGoldTrackerDB = {} end
 		if not SessionGoldTrackerDB.history then SessionGoldTrackerDB.history = {} end
 		StartSession(false)
+
+		-- Restore UI state from last session
+		local ui = SessionGoldTrackerDB.uiState
+		if ui then
+			if ui.isMiniMode then
+				miniBtn:Click()
+			else
+				if ui.isExtraShown then extraBtn:Click() end
+				if ui.isHistoryShown then historyBtn:Click() end
+				--if ui.isAboutShown then aboutBtn:Click() end
+			end
+		end
+
 		print("|cffffd700[Session Gold Tracker]|r Session started. Use /sgt for options.")
 	elseif event == "PLAYER_LOGOUT" then
 		SaveSessionToHistory()
+		SessionGoldTrackerDB.uiState = {
+			isMiniMode		= isMiniMode,
+			isExtraShown	= isExtraShown,
+			isHistoryShown	= isHistoryShown,
+			--isAboutShown	= isAboutShown,
+		}
 	elseif event == "PLAYER_MONEY" then
 		local current = GetCurrentMoney()
 		local delta   = current - lastMoney
