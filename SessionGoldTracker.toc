@@ -1,5 +1,5 @@
 ## Interface: 120005
-## Title: Session Gold Tracker
+## Title: SessionGoldTracker
 ## Notes: Tracks gold earned or lost during your current play session.
 ## Author: Exodius & Darkal
 ## URL: https://github.com/Exodius/SessionGoldTracker

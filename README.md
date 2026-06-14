@@ -1,4 +1,4 @@
-# Session Gold Tracker
+# SessionGoldTracker
 
 A lightweight World of Warcraft addon that tracks your gold activity in real time during each play session.
 
@@ -13,7 +13,7 @@ A lightweight World of Warcraft addon that tracks your gold activity in real tim
    ```
    World of Warcraft/_retail_/Interface/AddOns/SessionGoldTracker/
    ```
-3. Launch WoW and enable **Session Gold Tracker** in the AddOns menu on the character select screen
+3. Launch WoW and enable **SessionGoldTracker** in the AddOns menu on the character select screen
 
 ---
 

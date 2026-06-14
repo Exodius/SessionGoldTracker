@@ -1,5 +1,5 @@
 --	-----------------------------------------------------------
---	Session Gold Tracker
+--	SessionGoldTracker
 --	Tracks gold earned/lost per session with extra stats
 --	Authors: Exodius & Darkal
 --	-----------------------------------------------------------
@@ -57,9 +57,9 @@ local function FormatDuration(seconds)
 end
 
 local function FormatDate(epoch)
-	-- epoch from time() — format as DD/MM/YYYY HH:MM
+	-- epoch from time() — format as DD/MM/YY HH:MM
 	local t = date("*t", epoch)
-	return string.format("%02d/%02d/%04d %02d:%02d", t.day, t.month, t.year, t.hour, t.min)
+	return string.format("%02d/%02d/%02d %02d:%02d", t.day, t.month, t.year % 100, t.hour, t.min)
 end
 
 --	States
