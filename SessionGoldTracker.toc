@@ -1,4 +1,4 @@
-## Interface: 120005
+## Interface: 120007
 ## Title: SessionGoldTracker
 ## Notes: Tracks gold earned or lost during your current play session.
 ## Author: Exodius & Darkal

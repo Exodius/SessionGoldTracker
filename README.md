@@ -2,7 +2,7 @@
 
 A lightweight World of Warcraft addon that tracks your gold activity in real time during each play session.
 
-![WoW Version](https://img.shields.io/badge/WoW-12.0.5-blue) ![Version](https://img.shields.io/badge/Version-1.0-green)
+![WoW Version](https://img.shields.io/badge/WoW-12.0.7-blue) ![Version](https://img.shields.io/badge/Version-1.0-green)
 
 ---
 
@@ -72,7 +72,7 @@ Click the **M** button in the top-right corner of the main window to collapse ev
 
 ## Compatibility
 
-- **Retail WoW** — Interface version 12.0.5
+- **Retail WoW** — Interface version 12.0.7
 - If you are on a different patch, update the `## Interface` version in `SessionGoldTracker.toc` to match. You can find the correct value on the [Wowpedia Interface version list](https://wowpedia.fandom.com/wiki/Interface_version), or simply enable **Load out of date AddOns** in the character select AddOns menu.
 
 ---
