@@ -196,7 +196,7 @@ local ROW_HEIGHT	= 16
 local HISTORY_ROWS	= 8  -- visible rows at once
 
 local historyFrame = CreateFrame("Frame", "SGTHistoryFrame", UIParent, "BackdropTemplate")
-historyFrame:SetSize(360, 44 + HISTORY_ROWS * ROW_HEIGHT)
+historyFrame:SetSize(400, 44 + HISTORY_ROWS * ROW_HEIGHT)
 historyFrame:SetClampedToScreen(true)
 historyFrame:SetBackdrop({
 	bgFile   = "Interface/Tooltips/UI-Tooltip-Background",
@@ -228,20 +228,24 @@ hdrDate:SetPoint("TOPLEFT", historyFrame, "TOPLEFT", 10, -22)
 hdrDate:SetText("|cffffffffDate|r")
 
 local hdrLen = historyFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-hdrLen:SetPoint("TOPLEFT", historyFrame, "TOPLEFT", 130, -22)
+hdrLen:SetPoint("TOPLEFT", historyFrame, "TOPLEFT", 110, -22)
 hdrLen:SetText("|cffffffffLength|r")
 
 local hdrGold = historyFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-hdrGold:SetPoint("TOPLEFT", historyFrame, "TOPLEFT", 220, -22)
+hdrGold:SetPoint("TOPLEFT", historyFrame, "TOPLEFT", 190, -22)
 hdrGold:SetText("|cffffffffEarned|r")
+
+local hdrChar = historyFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+hdrChar:SetPoint("TOPLEFT", historyFrame, "TOPLEFT", 280, -22)
+hdrChar:SetText("|cffffffffCharacter|r")
 
 --	Scrollable row area
 local scrollFrame = CreateFrame("ScrollFrame", "SGTHistoryScroll", historyFrame, "UIPanelScrollFrameTemplate")
-scrollFrame:SetSize(315, HISTORY_ROWS * ROW_HEIGHT)
+scrollFrame:SetSize(355, HISTORY_ROWS * ROW_HEIGHT)
 scrollFrame:SetPoint("TOPLEFT", historyFrame, "TOPLEFT", 8, -34)
 
 local scrollChild = CreateFrame("Frame", nil, scrollFrame)
-scrollChild:SetSize(310, HISTORY_ROWS * ROW_HEIGHT)
+scrollChild:SetSize(350, HISTORY_ROWS * ROW_HEIGHT)
 scrollFrame:SetScrollChild(scrollChild)
 
 -- Pre-create row labels
@@ -253,24 +257,30 @@ for i = 1, MAX_HISTORY do
 
 	local dateStr = row:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
 	dateStr:SetPoint("LEFT", row, "LEFT", 2, 0)
-	dateStr:SetWidth(118)
+	dateStr:SetWidth(98)
 	dateStr:SetJustifyH("LEFT")
 	dateStr:SetNonSpaceWrap(false)
 
 	local lenStr = row:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-	lenStr:SetPoint("LEFT", row, "LEFT", 122, 0)
-	lenStr:SetWidth(88)
+	lenStr:SetPoint("LEFT", row, "LEFT", 102, 0)
+	lenStr:SetWidth(78)
 	lenStr:SetJustifyH("LEFT")
 	lenStr:SetNonSpaceWrap(false)
 
 	local goldStr = row:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-	goldStr:SetPoint("LEFT", row, "LEFT", 212, 0)
-	goldStr:SetWidth(120)
+	goldStr:SetPoint("LEFT", row, "LEFT", 182, 0)
+	goldStr:SetWidth(90)
 	goldStr:SetJustifyH("LEFT")
 	goldStr:SetNonSpaceWrap(false)
 
+	local charStr = row:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+	charStr:SetPoint("LEFT", row, "LEFT", 272, 0)
+	charStr:SetWidth(78)
+	charStr:SetJustifyH("LEFT")
+	charStr:SetNonSpaceWrap(false)
+
 	row:Hide()
-	histRows[i] = { frame=row, date=dateStr, len=lenStr, gold=goldStr }
+	histRows[i] = { frame=row, date=dateStr, len=lenStr, gold=goldStr, char=charStr }
 end
 
 --	Clear history button
@@ -401,11 +411,13 @@ local function RefreshHistoryRows()
 			histRows[i].date:SetText(entry.date)
 			histRows[i].len:SetText(FormatDuration(entry.length))
 			histRows[i].gold:SetText(color .. sign .. FormatMoneyPlain(math.abs(earned)) .. "|r")
+			histRows[i].char:SetText(entry.character or "—")
 			histRows[i].frame:Show()
 		else
 			histRows[i].date:SetText("")
 			histRows[i].len:SetText("")
 			histRows[i].gold:SetText("")
+			histRows[i].char:SetText("")
 			histRows[i].frame:Hide()
 		end
 	end
@@ -421,13 +433,14 @@ local function SaveSessionToHistory()
 	local elapsed = math.floor(GetTime() - sessionStartTime)
 	local net = sessionNet
 
-	-- Only save if session was at least 60 seconds long
+	-- Only save if session was at least 10 seconds long
 	if elapsed < 60 then return end
 
 	local entry = {
-		date   = FormatDate(sessionStartEpoch),
-		length = elapsed,
-		net	= net,
+		date		= FormatDate(sessionStartEpoch),
+		length		= elapsed,
+		net			= net,
+		character	= UnitName("player"),
 	}
 
 	table.insert(SessionGoldTrackerDB.history, 1, entry)
