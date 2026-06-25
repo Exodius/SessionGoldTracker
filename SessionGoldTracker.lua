@@ -433,8 +433,11 @@ local function SaveSessionToHistory()
 	local elapsed = math.floor(GetTime() - sessionStartTime)
 	local net = sessionNet
 
-	-- Only save if session was at least 10 seconds long
+	-- Only save if session was at least 60 seconds long
 	if elapsed < 60 then return end
+
+	-- Skip sessions with no gold change at all
+	if net == 0 then return end
 
 	local entry = {
 		date		= FormatDate(sessionStartEpoch),
