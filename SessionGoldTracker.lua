@@ -487,7 +487,7 @@ local function UpdateDisplay()
 	local netColor	= net >= 0 and "|cff00ff00" or "|cffff4444"
 	local netSign	= net >= 0 and "+" or ""
 	netLabel:SetText("Net: " .. netColor .. netSign .. FormatMoney(net) .. "|r")
-	miniNetLabel:SetText("SGT Net: " .. netColor .. netSign .. FormatMoney(math.abs(net)) .. "|r")
+	miniNetLabel:SetText("SGT Net: " .. netColor .. netSign .. FormatMoney(net) .. "|r")
 	if isExtraShown then UpdateExtraDisplay() end
 end
 
