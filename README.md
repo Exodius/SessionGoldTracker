@@ -2,7 +2,7 @@
 
 A lightweight World of Warcraft addon that tracks your gold activity across your characters in real time during each play session.
 
-![WoW Version](https://img.shields.io/badge/WoW-12.0.7-blue) ![WoW Version](https://img.shields.io/badge/WoW-12.1.0-blue) ![Version](https://img.shields.io/badge/Version-1.04-green)
+![WoW Version](https://img.shields.io/badge/WoW-12.0.7-blue) ![WoW Version](https://img.shields.io/badge/WoW-12.1.0-blue) ![Version](https://img.shields.io/badge/Version-1.05-green)
 
 ---
 
